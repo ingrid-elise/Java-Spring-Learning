@@ -1,4 +1,4 @@
-package com.example.demo.student;
+package com.example.demo.student.entity;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -29,8 +29,6 @@ public class Student {
     private String name;
     private String email;
     private LocalDate dob;
-    @Transient // age no longer needs to be a column in the database
-    private Integer age;
 
     public Student() {
 
@@ -93,10 +91,6 @@ public class Student {
         // this helps us get the age of the student from their DOB and the current date
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
 
     @Override
     public String toString() {
@@ -105,7 +99,6 @@ public class Student {
             ", name='" + name + '\'' +
             ", email='" + email + '\'' +
             ", dob='" + dob +
-            ", age='" + age +
             "}";
     }
 

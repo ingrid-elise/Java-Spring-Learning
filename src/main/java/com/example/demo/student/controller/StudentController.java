@@ -1,9 +1,11 @@
-package com.example.demo.student;
+package com.example.demo.student.controller;
 
 import java.util.List;
 
 import javax.resource.spi.IllegalStateException;
 
+import com.example.demo.student.entity.Student;
+import com.example.demo.student.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 
@@ -42,5 +44,5 @@ public class StudentController { // this will have all of the resources for our 
         studentService.deleteStudent(studentId);
     }
 
-    
+
 }

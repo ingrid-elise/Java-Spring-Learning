@@ -1,13 +1,13 @@
-package com.example.demo.student;
+package com.example.demo.student.service;
 
 // import java.time.LocalDate;
 // import java.time.Month;
 import java.util.List;
 import java.util.Optional;
 
-import javax.resource.spi.IllegalStateException;
-
-import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
+import com.example.demo.student.EmailNotExistsException;
+import com.example.demo.student.entity.Student;
+import com.example.demo.student.repository.StudentRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,23 +27,20 @@ public class StudentService {
 		return studentRepository.findAll();
 	}
 
-    public void addNewStudent(Student student) throws IllegalStateException {
+    public void addNewStudent(Student student) {
         Optional<Student> studentOptional = studentRepository
         .findStudentByEmail(student.getEmail());
         if (studentOptional.isPresent()) {
-            throw new IllegalStateException("email taken");
+            throw new EmailNotExistsException();
         } else {
             studentRepository.save(student);
         }
     }
 
-    public void deleteStudent(Long studentId) throws IllegalStateException {
+    public boolean deleteStudent(Long studentId) {
         boolean exists = studentRepository.existsById(studentId);
-        if (!exists) { // if id doesn't exist then we want to ...
-            throw new IllegalStateException("student with id" + studentId + "does not exist");
-        } else { // if student id does exist we want to delete 
-            studentRepository.deleteById(studentId);
-        }
+        studentRepository.deleteById(studentId);
+        return exists;
     }
 
 }
