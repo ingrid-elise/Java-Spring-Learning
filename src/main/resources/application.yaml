@@ -1,0 +1,5 @@
+server.error.include-message: always
+
+# create-drop means you have a clean state every time you create the application
+# need to install postgress.app
+# 'student' is the database name
