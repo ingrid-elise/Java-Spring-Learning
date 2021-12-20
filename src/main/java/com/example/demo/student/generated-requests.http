@@ -1,0 +1,26 @@
+###
+PUT http://localhost:8080/api/v1/registration
+Content-Type: application/json
+{
+    "firstName": "B",
+    "lastName": "A",
+    "email": "b@gmail.com",
+    "password": "password"
+}
+
+###
+
+POST http://localhost:8080/api/v1/student HTTP/1.1
+User-Agent: rest-client
+Accept-Language: en-GB,en-US;q=0.8,en;q=0.6,zh-CN;q=0.4
+Content-Type: application/json
+
+{
+    "name": "BC",
+    "email": "bc@gmail.com",
+    "dob": "1995-12-17"
+}
+
+###
+
+DELETE http://localhost:8080/api/v1/student/1 HTTP/1.1
